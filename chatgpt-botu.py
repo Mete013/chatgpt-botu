@@ -1,16 +1,16 @@
 import telegram
 from telegram.ext import Updater, CommandHandler
 
+# Define a function to handle the /start command
 def start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Salam!")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Hello")
 
-def main():
-    updater = Updater(token="1801568916:AAEToeCtmwjKkuU2mv9Eb9ff0xF9w4vUUvI", use_context=True)
-    dp = updater.dispatcher
-    start_handler = CommandHandler("start", start)
-    dp.add_handler(start_handler)
-    updater.start_polling()
-    updater.idle()
+# Set up the bot with your API token
+updater = Updater("1801568916:AAEToeCtmwjKkuU2mv9Eb9ff0xF9w4vUUvI", use_context=True)
 
-if __name__ == '__main__':
-    main()
+# Add a handler for the /start command
+updater.dispatcher.add_handler(CommandHandler('start', start))
+
+# Start the bot
+updater.start_polling()
+updater.idle()
